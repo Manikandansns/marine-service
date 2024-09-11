@@ -1,0 +1,1 @@
+user-agent: *Disallow: /private/Allow: /#%20If%20you%20have%20a%20sitemap,%20include%20it%20here:Sitemap:%20https://yourwebsite.com/sitemap.xml

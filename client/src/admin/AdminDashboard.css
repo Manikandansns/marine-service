@@ -1,0 +1,97 @@
+.admin-dashboard {
+    font-family: Arial, sans-serif;
+}
+
+.admin-nav-wrapper {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    padding: 1.7rem 2.4rem;
+    justify-content: space-between;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.197);
+}
+
+.admin-title {
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.admin-nav-btn {
+    display: flex;
+    align-items: center;
+}
+
+.add-btn, .log-out {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: medium;
+    margin-right: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-btn {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.add-btn:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+.log-out {
+    border: 2px solid black;
+    color: black;
+    background: none;
+}
+
+.log-out:hover {
+    transform: scale(1.05);
+}
+
+.admin-container {
+    margin: 0 2rem;
+    padding-top: 7.8rem;
+}
+
+.service-item, .gallery-item {
+    margin-bottom: 1.5rem;
+}
+
+.gallery-item img {
+    border-radius: 5px;
+}
+
+.service-item button, .gallery-item button {
+    padding: 0.5rem 1rem;
+    margin: 5px;
+    font-weight: 500;
+    font-size: medium;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.service-item .edit-btn, .gallery-item .edit-btn {
+    background-color: unset;
+    color: black;
+    border: 1px solid black;
+}
+
+.service-item .edit-btn:hover, .gallery-item .edit-btn:hover {
+    background-color: #f4f2f2c2;
+    transform: scale(1.05);
+}
+
+.service-item .delete-btn, .gallery-item .delete-btn {
+    background-color: rgb(241, 36, 36);
+}
+
+.service-item .delete-btn:hover, .gallery-item .delete-btn:hover {
+    background-color: #a70303;
+    transform: scale(1.05);
+}
