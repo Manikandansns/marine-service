@@ -111,3 +111,36 @@ exports.deleteSubService = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// Get a service by ID
+exports.getServiceById = async (req, res) => {
+  try {
+    const service = await Service.findById(req.params.id);
+    if (!service) {
+      return res.status(404).json({ message: 'Service not found' });
+    }
+    res.json(service);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Get a sub-service by ID
+exports.getSubServiceById = async (req, res) => {
+  try {
+    const { serviceId, subServiceId } = req.params;
+    const service = await Service.findById(serviceId);
+    if (!service) {
+      return res.status(404).json({ message: 'Service not found' });
+    }
+
+    const subService = service.subServices.id(subServiceId);
+    if (!subService) {
+      return res.status(404).json({ message: 'Sub-service not found' });
+    }
+
+    res.json(subService);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

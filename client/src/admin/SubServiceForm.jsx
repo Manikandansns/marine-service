@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ const SubServiceForm = ({ fetchServices }) => {
     description: '',
     image: null,
   });
+  const [existingImage, setExistingImage] = useState(''); // For displaying existing image if needed
 
   const navigate = useNavigate();
   const { serviceId, subServiceId } = useParams();
@@ -24,8 +25,9 @@ const SubServiceForm = ({ fetchServices }) => {
       setSubService({
         name: res.data.name,
         description: res.data.description,
-        image: null,
+        image: null, // Reset image to allow upload of new image
       });
+      setExistingImage(res.data.image || ''); // Adjust if needed based on API response
     } catch (error) {
       console.error('Error fetching sub-service data:', error);
     }
@@ -59,8 +61,8 @@ const SubServiceForm = ({ fetchServices }) => {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
       }
-      if (fetchServices) fetchServices(); // Ensure fetchServices is a valid function
-      navigate('/admin/dashboard');
+      fetchServices(); // Refresh the service list
+      navigate(`/admin/service/${serviceId}`);
     } catch (error) {
       console.error('Error submitting sub-service:', error);
     }
@@ -69,22 +71,39 @@ const SubServiceForm = ({ fetchServices }) => {
   return (
     <form onSubmit={handleSubmit}>
       <h2>{subServiceId ? 'Edit Sub-Service' : 'Add Sub-Service'}</h2>
-      <input
-        type="text"
-        name="name"
-        placeholder="Sub-Service Name"
-        value={subService.name}
-        onChange={handleChange}
-        required
-      />
-      <textarea
-        name="description"
-        placeholder="Sub-Service Description"
-        value={subService.description}
-        onChange={handleChange}
-        required
-      />
-      <input type="file" onChange={handleImageChange} />
+      <div>
+        <label>Name:</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Sub-Service Name"
+          value={subService.name}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Description:</label>
+        <textarea
+          name="description"
+          placeholder="Sub-Service Description"
+          value={subService.description}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      {existingImage && (
+        <div>
+          <img src={`http://localhost:5000${existingImage}`} alt="Existing Sub-Service" style={{ width: '100px', height: 'auto' }} />
+        </div>
+      )}
+      <div>
+        <label>Image:</label>
+        <input
+          type="file"
+          onChange={handleImageChange}
+        />
+      </div>
       <button type="submit">{subServiceId ? 'Update' : 'Submit'}</button>
     </form>
   );

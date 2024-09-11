@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { getAllGalleryItems, createGalleryItem, updateGalleryItem, deleteGalleryItem } = require('../controllers/galleryController');
+const { getAllGalleryItems, createGalleryItem, updateGalleryItem, deleteGalleryItem, getGalleryById } = require('../controllers/galleryController');
 
 const router = express.Router();
 
@@ -19,5 +19,6 @@ router.get('/', getAllGalleryItems);
 router.post('/', upload.single('image'), createGalleryItem);
 router.put('/:id', upload.single('image'), updateGalleryItem);
 router.delete('/:id', deleteGalleryItem);
+router.get('/:id', getGalleryById)
 
 module.exports = router;

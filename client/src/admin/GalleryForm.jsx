@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -6,7 +6,8 @@ const GalleryForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
-  const { galleryId } = useParams();  // Get galleryId from URL
+  const [existingImage, setExistingImage] = useState(''); // For displaying existing image if needed
+  const { galleryId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,9 +23,14 @@ const GalleryForm = () => {
       });
       setTitle(res.data.title);
       setDescription(res.data.description);
+      setExistingImage(res.data.image || ''); 
     } catch (error) {
       console.error('Error fetching gallery item:', error);
     }
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
@@ -38,17 +44,15 @@ const GalleryForm = () => {
 
     try {
       if (galleryId) {
-        // Update gallery item
         await axios.put(`http://localhost:5000/api/gallery/${galleryId}`, formData, {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
       } else {
-        // Add new gallery item
         await axios.post('http://localhost:5000/api/gallery', formData, {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
       }
-      navigate('/admin/dashboard');  // Redirect to dashboard after submission
+      navigate('/admin/dashboard');
     } catch (error) {
       console.error('Error submitting gallery item:', error);
     }
@@ -57,18 +61,37 @@ const GalleryForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h2>{galleryId ? 'Edit Gallery Item' : 'Add Gallery Item'}</h2>
-      <input
-        type="text"
-        placeholder="Gallery Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <textarea
-        placeholder="Gallery Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+      <div>
+        <label>Title:</label>
+        <input
+          type="text"
+          placeholder="Gallery Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label>Description:</label>
+        <textarea
+          placeholder="Gallery Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+      </div>
+      {existingImage && (
+        <div>
+          <img src={`http://localhost:5000${existingImage}`} alt="Existing Gallery" style={{ width: '100px', height: 'auto' }} />
+        </div>
+      )}
+      <div>
+        <label>Image:</label>
+        <input
+          type="file"
+          onChange={handleImageChange}
+        />
+      </div>
       <button type="submit">{galleryId ? 'Update' : 'Submit'}</button>
     </form>
   );

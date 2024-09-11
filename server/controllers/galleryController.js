@@ -48,3 +48,15 @@ exports.deleteGalleryItem = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.getGalleryById = async (req, res) => {
+  try {
+      const galleryItem = await Gallery.findById(req.params.id);
+      if (!galleryItem) {
+          return res.status(404).json({ message: 'Gallery item not found' });
+      }
+      res.json(galleryItem);
+  } catch (error) {
+      res.status(500).json({ message: 'Server error' });
+  }
+};

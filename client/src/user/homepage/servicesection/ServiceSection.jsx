@@ -33,11 +33,7 @@ const ServiceSection = () => {
         {services.length > 0 ? ( // Check if services data is available
           services.map((service) => (
             <div key={service._id} className="service-card">
-              <img
-                src={service.image}
-                alt={service.title}
-                className="service-image"
-              />
+            <img src={`http://localhost:5000${service.image}`} alt={service.title} className="service-image" />
               <div className="service-content">
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
