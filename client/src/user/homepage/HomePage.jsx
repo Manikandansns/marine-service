@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import ServiceCard from '../../components/ServiceCard';
+import ServiceSection from './servicesection/ServiceSection';
+import Navbar from './../../components/navbar/Navbar';
+import HeroSection from './herosection/HeroSection';
+import AboutSection from './aboutsection/AboutSection';
+import Footer from '../../components/footer/Footer';
+import Testimonials from './testimonial/testimonial';
 
 const HomePage = () => {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      const res = await axios.get('http://localhost:5000/api/services');
-      setServices(res.data);
-    };
-
-    fetchServices();
-  }, []);
+ 
 
   return (
     <div className="home-page">
-      <h1>Marine Services</h1>
-      <div className="service-grid">
-        {services.map(service => (
-          <ServiceCard key={service._id} service={service} />
-        ))}
-      </div>
+    <Navbar/>
+    <HeroSection/>
+    <AboutSection/>
+    <ServiceSection/>
+    <Testimonials/>
+    <Footer/>
+    
     </div>
   );
 };

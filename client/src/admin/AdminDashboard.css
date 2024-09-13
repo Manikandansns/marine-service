@@ -1,22 +1,44 @@
-.admin-dashboard {
-    font-family: Arial, sans-serif;
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Body */
+body {
+    font-family: 'Poppins', sans-serif; 
+    background-color: #f4f5f7; 
+    color: #2c3e50; 
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Premium Admin Dashboard Layout */
+.admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
+/* Navigation Bar */
 .admin-nav-wrapper {
     display: flex;
     align-items: center;
-    position: fixed;
-    background-color: white;
-    width: 100%;
-    padding: 1.7rem 2.4rem;
     justify-content: space-between;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Ensure the navbar is above other content */
+    background-color: #1f2e3e;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
 .admin-title {
-    font-size: 1.8rem;
-    font-weight: 500;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f4f5f7;
+    letter-spacing: 1px;
 }
 
 .admin-nav-btn {
@@ -24,66 +46,109 @@
     align-items: center;
 }
 
-.add-btn, .log-out {
-    padding: 0.6rem 1.2rem;
-    font-weight: 500;
-    font-size: 1rem;
-    margin-left: 0.5rem;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
     cursor: pointer;
+    margin-left: 1rem;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* Responsive Navigation Bar */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .admin-nav-btn {
+        display: none;
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    .admin-nav-wrapper.active .admin-nav-btn {
+        display: flex;
+    }
+}
+
+/* Premium Buttons */
+.add-btn, .log-out {
+    padding: 0.9rem 1.6rem;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .add-btn {
-    background-color: black;
-    color: white;
+    background-color: #f39c12;
+    color: #fff;
     border: none;
 }
 
 .add-btn:hover {
-    background-color: #333;
+    background-color: #f1c40f;
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .log-out {
-    border: 2px solid black;
-    color: black;
-    background: none;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
 }
 
 .log-out:hover {
-    background-color: #f4f4f4;
+    background-color: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
 }
 
+/* Adaptive Admin Container */
 .admin-container {
-    margin: 0 2rem;
-    padding-top: 7.8rem;
+    margin: 0 3rem;
+    padding-top: 7.5rem;
+    transition: all 0.3s ease-in-out;
 }
 
-.error-message {
-    color: red;
-    font-weight: bold;
-}
-
+/* Premium Table Styling */
 .table-container {
     overflow-x: auto;
+    background-color: white;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    transition: all 0.4s ease;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: #2c3e50;
 }
 
 .table th, .table td {
-    padding: 0.8rem;
+    padding: 1.2rem;
     text-align: left;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #e1e1e1;
 }
 
 .table th {
-    background-color: #f4f4f4;
+    background-color: #1f2e3e;
+    color: white;
+    font-weight: 600;
 }
 
 .table tr:nth-child(even) {
@@ -91,74 +156,132 @@
 }
 
 .table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #f0f2f5;
+    transition: background-color 0.3s ease;
 }
 
+/* Buttons Inside Table */
 .table-button {
-    padding: 0.5rem 1rem;
-    margin: 0.2rem;
+    padding: 0.7rem 1.4rem;
+    margin: 0.4rem;
     font-weight: 500;
     font-size: 0.9rem;
     border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .table-button.add-btn {
-    background-color: black;
+    background-color: #f39c12;
     color: white;
 }
 
 .table-button.add-btn:hover {
-    background-color: #333;
+    background-color: #f1c40f;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .table-button.edit-btn {
-    background-color: #e0e0e0;
-    color: black;
+    background-color: #3498db;
+    color: white;
 }
 
 .table-button.edit-btn:hover {
-    background-color: #d0d0d0;
+    background-color: #2980b9;
+    transform: scale(1.05);
 }
 
 .table-button.delete-btn {
-    background-color: rgb(241, 36, 36);
+    background-color: #e74c3c;
     color: white;
 }
 
 .table-button.delete-btn:hover {
-    background-color: #a70303;
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Premium Card Design */
+.card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.4s ease;
+}
+
+.card:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Smooth Transitions */
+.admin-dashboard, .admin-nav-wrapper, .table, .table-container, .card, .table-button {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Box Shadows & Hover Effects */
+.card:hover, .table-container:hover {
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.15);
+}
+
+.add-btn, .log-out, .table-button:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .admin-container {
+        margin: 0 2rem;
+    }
+    .table th, .table td {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .admin-nav-wrapper {
-        flex-direction: column;
-        align-items: flex-start;
+    .admin-title {
+        font-size: 1.6rem;
     }
-
-    .admin-nav-btn {
-        margin-top: 1rem;
-        flex-direction: column;
+    .admin-container {
+        margin: 0 1.5rem;
     }
-
-    .add-btn, .log-out {
-        margin: 0.5rem 0;
+    .table-button {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+    .table th, .table td {
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 480px) {
     .admin-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
-
-    .table th, .table td {
-        font-size: 0.8rem;
+    .admin-container {
+        margin: 0 1rem;
     }
-
-    .table-button {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
+    .add-btn, .log-out {
+        padding: 0.7rem 1.2rem;
     }
 }
+
+
+/* AdminDashboard section starts */
+.admin-dashboard {
+    padding: 2rem;
+  }
+  
+  .admin-dashboard h1 {
+    text-align: center;
+    color: #4a91a0;
+  }
+  
+  .admin-dashboard .section {
+    margin-bottom: 2rem;
+  }
+  /* AdminDashboard section ends */

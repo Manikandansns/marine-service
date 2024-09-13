@@ -113,7 +113,7 @@ const AdminDashboard = () => {
                         <tbody>
                             {services.map(service => (
                                 <React.Fragment key={service._id}>
-                                    <tr>
+                                    <tr style={{background:'papayawhip'}}>
                                     <td> <img src={`http://localhost:5000${service.image}`} alt={service.title} className="service-image" /></td>                                    
                                         <td>{service.title}</td>
                                         <td>{service.description}</td>

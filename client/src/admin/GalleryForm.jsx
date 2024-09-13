@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../App.css'
 
 const GalleryForm = () => {
   const [title, setTitle] = useState('');
@@ -23,7 +24,8 @@ const GalleryForm = () => {
       });
       setTitle(res.data.title);
       setDescription(res.data.description);
-      setExistingImage(res.data.image || ''); 
+      setExistingImage(res.data.image || '');
+      console.log(res.data.image);
     } catch (error) {
       console.error('Error fetching gallery item:', error);
     }
@@ -59,9 +61,10 @@ const GalleryForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="gallery-form">
       <h2>{galleryId ? 'Edit Gallery Item' : 'Add Gallery Item'}</h2>
-      <div>
+
+      <div className="form-section">
         <label>Title:</label>
         <input
           type="text"
@@ -71,7 +74,8 @@ const GalleryForm = () => {
           required
         />
       </div>
-      <div>
+
+      <div className="form-section">
         <label>Description:</label>
         <textarea
           placeholder="Gallery Description"
@@ -80,18 +84,18 @@ const GalleryForm = () => {
           required
         />
       </div>
+
       {existingImage && (
-        <div>
-          <img src={`http://localhost:5000${existingImage}`} alt="Existing Gallery" style={{ width: '100px', height: 'auto' }} />
+        <div className="form-section">
+          <img src={existingImage} alt="Existing Gallery" />
         </div>
       )}
-      <div>
+
+      <div className="form-section">
         <label>Image:</label>
-        <input
-          type="file"
-          onChange={handleImageChange}
-        />
+        <input type="file" onChange={handleImageChange} />
       </div>
+
       <button type="submit">{galleryId ? 'Update' : 'Submit'}</button>
     </form>
   );
