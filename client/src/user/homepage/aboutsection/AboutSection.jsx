@@ -1,5 +1,5 @@
-import '../../../App.css';
-import marineImage from '../../../assets/marine2.jpg'; // Adjust the path to your image
+import '../HomePage.css';
+import marineImage from '../../../assets/marine2.jpg'; 
 
 const About = () => {
   return (

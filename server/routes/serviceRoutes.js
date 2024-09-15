@@ -23,6 +23,7 @@ router.delete('/:id', serviceController.deleteService);
 
 // Sub-service routes
 router.post('/:serviceId/subservice', serviceController.addSubService);
+router.get('/:serviceId/subservices', serviceController.getSubServicesForService);
 router.put('/:serviceId/subservice/:subServiceId', serviceController.updateSubService);
 router.delete('/:serviceId/subservice/:subServiceId', serviceController.deleteSubService);
 router.get('/:serviceId/subservice/:subServiceId', serviceController.getSubServiceById);

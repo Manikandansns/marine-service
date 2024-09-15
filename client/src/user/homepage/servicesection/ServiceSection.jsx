@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import axios from 'axios'; // Import axios for API calls
-import '../../../App.css'; // Ensure the path is correct
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import '../HomePage.css'; 
 
 const ServiceSection = () => {
-  const [services, setServices] = useState([]); // State to store services data
-  const navigate = useNavigate(); // Use useNavigate hook
+  const [services, setServices] = useState([]); 
+  const [isExpanded, setIsExpanded] = useState(false);
+  const navigate = useNavigate();
 
   // Fetch services from the backend API when the component mounts
   useEffect(() => {
@@ -21,9 +22,13 @@ const ServiceSection = () => {
     fetchServices(); // Call the function to fetch services
   }, []); // Empty dependency array ensures the effect runs only once on mount
 
-  // Function to navigate to a specific service page
+  // Function to navigate to the sub-services page
   const handleApplyNow = (serviceId) => {
-    navigate(`/services/${serviceId}`); // Navigate to the service detail page using serviceId
+    navigate(`/subservices/${serviceId}`); // Navigate to the sub-services page
+  };
+
+  const toggleContent = () => {
+    setIsExpanded(!isExpanded);
   };
 
   return (
@@ -33,10 +38,13 @@ const ServiceSection = () => {
         {services.length > 0 ? ( // Check if services data is available
           services.map((service) => (
             <div key={service._id} className="service-card">
-            <img src={`http://localhost:5000${service.image}`} alt={service.title} className="service-image" />
+            <div className="service-img-card">
+              <img src={`http://localhost:5000${service.image}`} alt={service.title} className="service-image" />
+              </div>
               <div className="service-content">
                 <h3>{service.title}</h3>
-                <p>{service.description}</p>
+                <p  className={`overflow-dots ${isExpanded ? 'expanded' : ''}`} 
+      onClick={toggleContent}>{service.description}</p>
                 <button
                   onClick={() => handleApplyNow(service._id)} // Use the service ID from the backend
                   className="apply-button"

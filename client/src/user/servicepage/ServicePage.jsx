@@ -1,54 +1,94 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { useParams } from 'react-router-dom';
-// import '../../App.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import './ServicePage.css';
 
-// const ServicePage = () => {
-//   const [service, setService] = useState(null);
-//   const [subServices, setSubServices] = useState([]);
-//   const { serviceId } = useParams();
+const ServicePage = () => {
+  // State to store services data
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-//   useEffect(() => {
-//     const fetchService = async () => {
-//       try {
-//         const response = await axios.get(`http://localhost:5000/api/services/${serviceId}`);
-//         setService(response.data);
-//         setSubServices(response.data.subServices || []);
-//       } catch (error) {
-//         console.error('Error fetching service:', error.response ? error.response.data : error.message);
-//       }
-//     };
+  // Fetch services from the backend on component mount
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/services');
+        setServices(response.data); // Set the services data
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to fetch services', err);
+        setLoading(false);
+      }
+    };
 
-//     fetchService();
-//   }, [serviceId]);
+    fetchServices(); // Call the function to fetch services
+  }, []);
 
-//   if (!service) return <div>Loading...</div>;
+  // Handle loading state
+  if (loading) {
+    return <p>Loading services...</p>;
+  }
 
-//   return (
-//     <div className="service-page">
-//       <h1>{service.title}</h1>
-//       <p>{service.description}</p>
-//       {service.image && <img src={service.image} alt={service.title} width="200" />}
-      
-//       {/* Sub-Services Section */}
-//       <div className="sub-services">
-//         <h2>Sub-Services</h2>
-//         {subServices.length > 0 ? (
-//           <ul>
-//             {subServices.map((subService, idx) => (
-//               <li key={idx}>
-//                 <h3>{subService.name}</h3>
-//                 <p>{subService.description}</p>
-//                 {subService.image && <img src={subService.image} alt={subService.name} width="100" />}
-//               </li>
-//             ))}
-//           </ul>
-//         ) : (
-//           <p>No sub-services available</p>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
+  // Handle error state
+  if (error) {
+    return <p>{error}</p>;
+  }
 
-// export default ServicePage;
+  // Render services and sub-services
+  return (
+    <div className="servicepage-wrapper">
+      <h1>Services</h1>
+      {services.length === 0 ? (
+        <p>No services available</p>
+      ) : (
+        services.map((service) => (
+          <div key={service._id} className="servicepage-container">
+          <div className='servicepage-main-container'>
+            <h2>{service.title}</h2>
+            <p>{service.description}</p>
+            <div className="servicepage-main-container-cardimage">
+            {service.image && (
+              <img
+                className="service-image"
+                src={`http://localhost:5000${service.image}`}
+                alt={service.title}
+              />
+            )}
+            </div>
+            </div>
+
+            <div className='servicepage-sub-container'>
+            <h3 className="sub-services-heading">Sub-Services</h3>
+            {service.subServices.length === 0 ? (
+              <p>No sub-services available</p>
+            ) : (
+              <ul className="sub-service-list">
+                {service.subServices.map((subService) => (
+                  <li key={subService._id} className="sub-service-item">
+                    
+                    <div className="servicepage-sub-container-cardimage">
+                    {subService.image && (
+                      <img
+                        className="sub-service-image"
+                        src={`http://localhost:5000${subService.image}`}
+                        alt={subService.name}
+                      />
+                    )}
+                    </div>
+                    <div className="servicepage-sub-container-cardcontainer">
+                    <h4>{subService.name}</h4>
+                    <p>{subService.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
+
+export default ServicePage;

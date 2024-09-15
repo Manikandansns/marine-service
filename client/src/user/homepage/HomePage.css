@@ -1,0 +1,304 @@
+
+/* Hero section starts */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5.8rem;
+  }
+  
+  .hero-content {
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 1;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin: 0;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    font-weight: 300;
+  }
+  
+  .hero-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .hero-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .hero-image.active {
+    opacity: 1;
+  }
+  /* Hero section ends */
+  /* about-section starts */
+  
+  .about-section {
+    background-color: #f8f9fa; 
+    padding: 60px 20px; 
+    text-align: center; 
+  }
+  
+  .about-container {
+    max-width: 1200px; /* Adjusted for better layout on larger screens */
+    margin: 0 auto; 
+  }
+  
+  .about-content-wrapper {
+    display: flex; /* Use flexbox for side-by-side layout */
+    align-items: center; /* Center align items vertically */
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    gap: 20px; /* Space between text and image */
+    justify-content: center; /* Center align items horizontally */
+  }
+  
+  .about-content {
+    flex: 1; /* Allow content to grow */
+    text-align: left; 
+    padding: 0 20px; 
+  }
+  
+  .about-title {
+    font-size: 2.5rem; 
+    color: #3498db;
+    margin-bottom: 20px; 
+    font-weight: bold; 
+  }
+  
+  .about-content p {
+    font-size: 1.125rem; 
+    color: #333; 
+    line-height: 1.6;
+    margin-bottom: 20px; 
+    transition: transform 0.3s ease; 
+  }
+  
+  .about-content p:hover {
+    transform: translateY(-5px); 
+  }
+  
+  .about-image {
+    flex: 1; /* Allow image container to grow */
+    text-align: center; /* Center align image */
+  }
+  
+  .about-image img {
+    max-width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; 
+  }
+  
+  @media (max-width: 768px) {
+    .about-title {
+      font-size: 2rem; 
+    }
+  
+    .about-content {
+      font-size: 1rem; 
+    }
+  
+    .about-content-wrapper {
+      flex-direction: column; /* Stack text and image vertically on small screens */
+      align-items: center; /* Center align items */
+    }
+  }
+  
+  /* about-section ends */
+  
+  /* Service section starts */
+  .service-section {
+    padding: 2rem;
+    background-color: #f4f4f4;
+  }
+
+  .service-img-card{
+    width: 300px;
+    height: 300px;
+  }
+  
+  .service-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #4a91a0;
+  }
+  
+  .service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .service-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .service-content {
+    padding: 1rem;
+  }
+  
+  .service-content h3 {
+    margin-top: 0;
+    color: #4a91a0;
+  }
+  
+  .overflow-dots{
+    width: 268px;                  /* Set a fixed width */
+    max-height: calc(1.2em * 4);
+    overflow: hidden;             
+    text-overflow: ellipsis;       
+    display: -webkit-box;  
+    -webkit-line-clamp: 4;          
+    -webkit-box-orient: vertical;  
+    cursor: pointer;               
+    transition: all 0.3s ease;
+    position: relative;     
+  }
+
+  .overflow-dots::after {
+    content: '.......';                /* Add dots at the end */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: white;             /* Background to match the container for better appearance */
+  }
+  
+  .expanded {
+    max-height: none;              
+    -webkit-line-clamp: unset;        
+  }
+
+  .expanded::after {
+    content: '';                   /* Remove dots when expanded */
+  }
+
+  .apply-button {
+    background-color: #4a91a0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .apply-button:hover {
+    background-color: #357a7c;
+  }
+  /* Service section ends */
+  
+  
+/* testimonial starts */
+
+.testimonials-section {
+    background-color: #f4f6f9; 
+    padding: 60px 20px; 
+    text-align: center; 
+  }
+  
+  .testimonials-title {
+    font-size: 2.5rem; 
+    color: #3498db; 
+    margin-bottom: 40px;
+    font-weight: bold; 
+  }
+  
+  .testimonials-container {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+  }
+  
+  .testimonial-card {
+    background-color: #fff; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    max-width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .testimonial-avatar {
+    width: 60px; 
+    height: 60px;
+    margin-bottom: 15px; 
+  }
+  
+  .testimonial-content {
+    margin-left: 15px; 
+  }
+  
+  .testimonial-text {
+    font-size: 1rem; 
+    color: #555; 
+    margin-bottom: 10px; 
+  }
+  
+  .testimonial-name {
+    font-weight: bold; 
+    color: #333; 
+  }
+  
+  .testimonial-role {
+    color: #888; 
+  }
+  
+  @media (max-width: 768px) {
+    .testimonials-container {
+      flex-direction: column;
+      align-items: center; 
+    }
+  
+    .testimonial-card {
+      max-width: 90%; 
+    }
+  }
+
+  /* testimonial ends */

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar } from '@mui/material'; // Import Avatar component from MUI
-import '../../../App.css'
+import '../HomePage.css'
 
 const testimonials = [
   {
@@ -30,9 +30,9 @@ const Testimonials = () => {
       <div className="testimonials-container">
         {testimonials.map((testimonial, index) => (
           <div key={index} className="testimonial-card">
-            <Avatar src={testimonial.avatar} className="testimonial-avatar" />
+            <Avatar src={testimonial.avatar} alt="avatar" className="testimonial-avatar" />
             <div className="testimonial-content">
-              <p className="testimonial-text">"{testimonial.text}"</p>
+              <p className="testimonial-text">{testimonial.text}</p>
               <p className="testimonial-name">{testimonial.name}</p>
               <p className="testimonial-role">{testimonial.role}</p>
             </div>

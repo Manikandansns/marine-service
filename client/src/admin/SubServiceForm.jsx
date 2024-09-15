@@ -25,9 +25,9 @@ const SubServiceForm = ({ fetchServices }) => {
       setSubService({
         name: res.data.name,
         description: res.data.description,
-        image: null, // Reset image to allow upload of new image
+        image: null, 
       });
-      setExistingImage(res.data.image || ''); // Adjust if needed based on API response
+      setExistingImage(res.data.image || '');
     } catch (error) {
       console.error('Error fetching sub-service data:', error);
     }
@@ -50,18 +50,20 @@ const SubServiceForm = ({ fetchServices }) => {
     if (subService.image) {
       formData.append('image', subService.image);
     }
+    console.log(formData)
 
     try {
       if (subServiceId) {
         await axios.put(`http://localhost:5000/api/services/${serviceId}/subservice/${subServiceId}`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
+
       } else {
         await axios.post(`http://localhost:5000/api/services/${serviceId}/subservice`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
       }
-      fetchServices(); // Refresh the service list
+      fetchServices(); 
       navigate(`/admin/service/${serviceId}`);
     } catch (error) {
       console.error('Error submitting sub-service:', error);

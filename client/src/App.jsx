@@ -7,10 +7,11 @@ import ServiceForm from './admin/ServiceForm';
 import GalleryForm from './admin/GalleryForm';
 import SubServiceForm from './admin/SubServiceForm';
 import HomePage from './user/homepage/HomePage';
-// import ServicePage from './user/servicepage/ServicePage';
+import ServicePage from './user/servicepage/ServicePage';
 import AboutPage from './user/aboutpage/AboutPage';
 import ContactPage from './user/contactpage/ContactPage';
 import GalleryList from './admin/GalleryList';
+import SubServicePage from './user/subservicepage/SubServicePage';
 
 function App() {
   return (
@@ -67,15 +68,17 @@ function App() {
           }
         />
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/service" element={<ServicePage />} /> */}
+        <Route path="/service" element={<ServicePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/gallery" element={<GalleryList/>}/>
-        {/* <Route path="/services/:serviceId" element={<ServicePage />} /> */}
+        <Route path="/services/:serviceId" element={<ServicePage />} />
         <Route path="/admin" element={<AdminDashboard />} />
-        {/* Dynamic route for adding/editing sub-services */}
+
         <Route path="/admin/:serviceId/add-subservice" element={<SubServiceForm />} />
         <Route path="/admin/:serviceId/subservice/:subServiceId" element={<SubServiceForm />} />
+
+        <Route path="/subservices/:serviceId" element={<SubServicePage/> } />
       </Routes>
     </BrowserRouter>
   );

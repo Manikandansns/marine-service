@@ -67,9 +67,11 @@ exports.addSubService = async (req, res) => {
 exports.updateSubService = async (req, res) => {
   try {
     const { serviceId, subServiceId } = req.params;
+    console.log(serviceId, subServiceId);
     const { name, description } = req.body;
+    console.log(name, description)
     const image = req.file ? `/uploads/${req.file.filename}` : req.body.image;
-
+    console.log(image)
     const service = await Service.findById(serviceId);
     if (!service) return res.status(404).json({ message: 'Service not found' });
 
@@ -82,6 +84,7 @@ exports.updateSubService = async (req, res) => {
 
     await service.save();
     res.json(service);
+    console.log(subService);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -140,6 +143,18 @@ exports.getSubServiceById = async (req, res) => {
     }
 
     res.json(subService);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Fetch sub-services for a specific service
+exports.getSubServicesForService = async (req, res) => {
+  try {
+    const service = await Service.findById(req.params.serviceId);
+    if (!service) return res.status(404).json({ message: 'Service not found' });
+
+    res.json(service.subServices); // Return the sub-services of the found service
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
