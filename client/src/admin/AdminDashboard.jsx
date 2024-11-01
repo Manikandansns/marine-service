@@ -126,7 +126,7 @@ const AdminDashboard = () => {
                                     {service.subServices && service.subServices.length > 0 && service.subServices.map(sub => (
                                         <tr key={sub._id}>
 
-                                       <td><img src={`http://localhost:5000${sub.image}`} alt={service.title} className="service-image" /></td>
+                                       <td><img src={`http://localhost:5000${sub.image}`} alt={sub.name} className="service-image" /></td>
                                             <td>{sub.name}</td>
                                             <td>{sub.description}</td>
                                             <td>

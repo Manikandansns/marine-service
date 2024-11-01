@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AdminLogin from './admin/AdminLogin';
 import AdminDashboard from './admin/AdminDashboard';
@@ -8,14 +7,17 @@ import GalleryForm from './admin/GalleryForm';
 import SubServiceForm from './admin/SubServiceForm';
 import HomePage from './user/homepage/HomePage';
 import ServicePage from './user/servicepage/ServicePage';
-import AboutPage from './user/aboutpage/AboutPage';
-import ContactPage from './user/contactpage/ContactPage';
+import ContactPage from './user/contactmain/ContactMain';
 import GalleryList from './admin/GalleryList';
 import SubServicePage from './user/subservicepage/SubServicePage';
+import FloatingButton from './components/floating/Floating';
+import FAQsPage from './components/FAQs/FAQsPage';
 
 function App() {
   return (
     <BrowserRouter>
+    <FAQsPage/>
+    <FloatingButton/>
       <Routes>
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
@@ -69,7 +71,6 @@ function App() {
         />
         <Route path="/" element={<HomePage />} />
         <Route path="/service" element={<ServicePage />} />
-        <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/gallery" element={<GalleryList/>}/>
         <Route path="/services/:serviceId" element={<ServicePage />} />

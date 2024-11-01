@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const serviceController = require('../controllers/serviceController');
+const {getAllServices, createService, getServiceById, updateService, deleteService, addSubService, getSubServicesForService, updateSubService, deleteSubService, getSubServiceById} = require('../controllers/serviceController');
 
 // Multer setup for image upload
 const storage = multer.diskStorage({
@@ -15,17 +15,17 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Define your routes here
-router.get('/', serviceController.getAllServices);
-router.post('/', serviceController.createService);
-router.get('/:id', serviceController.getServiceById);
-router.put('/:id', serviceController.updateService);
-router.delete('/:id', serviceController.deleteService);
+router.get('/', getAllServices);
+router.post('/', createService);
+router.get('/:id', getServiceById);
+router.put('/:id', updateService);
+router.delete('/:id', deleteService);
 
 // Sub-service routes
-router.post('/:serviceId/subservice', serviceController.addSubService);
-router.get('/:serviceId/subservices', serviceController.getSubServicesForService);
-router.put('/:serviceId/subservice/:subServiceId', serviceController.updateSubService);
-router.delete('/:serviceId/subservice/:subServiceId', serviceController.deleteSubService);
-router.get('/:serviceId/subservice/:subServiceId', serviceController.getSubServiceById);
+router.post('/:serviceId/subservice', addSubService);
+router.get('/:serviceId/subservices', getSubServicesForService);
+router.put('/:serviceId/subservice/:subServiceId', updateSubService);
+router.delete('/:serviceId/subservice/:subServiceId', deleteSubService);
+router.get('/:serviceId/subservice/:subServiceId', getSubServiceById);
 
 module.exports = router;

@@ -29,6 +29,7 @@ const ServiceForm = () => {
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
+
   };
 
   const handleSubmit = async (e) => {
@@ -48,7 +49,9 @@ const ServiceForm = () => {
       } else {
         await axios.post('http://localhost:5000/api/services', formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
-        });
+        },
+        console.log(formData),
+      );
       }
       navigate('/admin/dashboard');
     } catch (error) {

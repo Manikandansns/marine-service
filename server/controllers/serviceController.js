@@ -17,6 +17,8 @@ exports.createService = async (req, res) => {
     const image = req.file ? `/uploads/${req.file.filename}` : '';
     const service = new Service({ title, description, image });
     await service.save();
+    res.json(service);
+    console.log(service);
     res.status(201).json(service);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -26,6 +28,7 @@ exports.createService = async (req, res) => {
 // Update a service
 exports.updateService = async (req, res) => {
   try {
+    console.log(req.body)
     const { title, description } = req.body;
     const image = req.file ? `/uploads/${req.file.filename}` : req.body.image;
     const updatedService = await Service.findByIdAndUpdate(
