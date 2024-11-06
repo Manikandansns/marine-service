@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../HomePage.css'; 
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+
 const ServiceSection = () => {
   const [services, setServices] = useState([]); 
   const [isExpanded, setIsExpanded] = useState(false);
@@ -12,50 +16,57 @@ const ServiceSection = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/services'); // Make the API request
-        setServices(response.data); // Update the services state with the response data
+        const response = await axios.get('http://localhost:5000/api/services');
+        setServices(response.data);
       } catch (error) {
-        console.error('Error fetching services:', error); // Handle any errors
+        console.error('Error fetching services:', error);
       }
     };
 
-    fetchServices(); // Call the function to fetch services
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+    fetchServices();
+  }, []);
 
   // Function to navigate to the sub-services page
-  const handleApplyNow = (serviceId) => {
-    navigate(`/subservices/${serviceId}`); // Navigate to the sub-services page
-  };
-
-  const toggleContent = () => {
-    setIsExpanded(!isExpanded);
+  const handleApplyNow = () => {
+    navigate('/service');
   };
 
   return (
-    <div className="service-section">
+    <div className="service-section" 
+      data-aos="zoom-in"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+    >
       <h2>Our Services</h2>
       <div className="service-cards">
-        {services.length > 0 ? ( // Check if services data is available
+        {services.length > 0 ? (
           services.map((service) => (
             <div key={service._id} className="service-card">
-            <div className="service-img-card">
-              <img src={`http://localhost:5000${service.image}`} alt={service.title} className="service-image" />
+              <div className="service-img-card">
+                <img src={`http://localhost:5000/${service.image}`} alt={service.title} className="service-image" />
               </div>
               <div className="service-content">
                 <h3>{service.title}</h3>
-                <p  className={`overflow-dots ${isExpanded ? 'expanded' : ''}`} 
-      onClick={toggleContent}>{service.description}</p>
+                {Array.isArray(service.points) ? (
+                  <ul className={`overflow-dots ${isExpanded ? 'expanded' : ''}`}>
+                    {service.points.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{service.points}</p>
+                )}
                 <button
-                  onClick={() => handleApplyNow(service._id)} // Use the service ID from the backend
+                  onClick={() => handleApplyNow()}
                   className="apply-button"
                 >
-                  Apply Now
+                  See More
                 </button>
               </div>
             </div>
           ))
         ) : (
-          <p>Loading services...</p> // Display loading message if services are not yet loaded
+          <p>Loading services...</p>
         )}
       </div>
     </div>

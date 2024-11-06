@@ -87,7 +87,7 @@ const GalleryForm = () => {
 
       {existingImage && (
         <div className="form-section">
-          <img src={existingImage} alt="Existing Gallery" />
+          <img src={`http://localhost:5000${existingImage}`} alt="Existing Gallery" />
         </div>
       )}
 

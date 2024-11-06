@@ -4,12 +4,12 @@ import AdminDashboard from './admin/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import ServiceForm from './admin/ServiceForm';
 import GalleryForm from './admin/GalleryForm';
-import SubServiceForm from './admin/SubServiceForm';
+// import SubServiceForm from './admin/SubServiceForm';
 import HomePage from './user/homepage/HomePage';
 import ServicePage from './user/servicepage/ServicePage';
 import ContactPage from './user/contactmain/ContactMain';
 import GalleryList from './admin/GalleryList';
-import SubServicePage from './user/subservicepage/SubServicePage';
+// import SubServicePage from './user/subservicepage/SubServicePage';
 import FloatingButton from './components/floating/Floating';
 import FAQsPage from './components/FAQs/FAQsPage';
 
@@ -44,15 +44,15 @@ function App() {
             </ProtectedRoute>
           }
         />
-         <Route path="/admin/add-subservice" element={<SubServiceForm />} />
-        <Route
+         {/* <Route path="/admin/add-subservice" element={<SubServiceForm />} /> */}
+        {/* <Route
           path="/admin/services/:serviceId/subservice/edit/:subServiceId"
           element={
             <ProtectedRoute>
               <SubServiceForm />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/admin/gallery/add"
           element={
@@ -76,10 +76,10 @@ function App() {
         <Route path="/services/:serviceId" element={<ServicePage />} />
         <Route path="/admin" element={<AdminDashboard />} />
 
-        <Route path="/admin/:serviceId/add-subservice" element={<SubServiceForm />} />
-        <Route path="/admin/:serviceId/subservice/:subServiceId" element={<SubServiceForm />} />
+        {/* <Route path="/admin/:serviceId/add-subservice" element={<SubServiceForm />} /> */}
+        {/* <Route path="/admin/:serviceId/subservice/:subServiceId" element={<SubServiceForm />} /> */}
 
-        <Route path="/subservices/:serviceId" element={<SubServicePage/> } />
+        {/* <Route path="/subservices/:serviceId" element={<SubServicePage/> } /> */}
       </Routes>
     </BrowserRouter>
   );

@@ -35,7 +35,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 120%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +46,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: inherit;
     opacity: 0;
     transition: opacity 1s ease-in-out;
   }
@@ -83,10 +83,10 @@
   }
   
   .about-title {
-    font-size: 2.5rem; 
-    color: #3498db;
-    margin-bottom: 20px; 
-    font-weight: bold; 
+    font-size: 2.5rem;
+    /* text-align: center; */
+    margin-bottom: 2rem;
+    color: #4a91a0;
   }
   
   .about-content p {
@@ -141,6 +141,7 @@
   }
   
   .service-section h2 {
+    font-size: 2.5rem;
     text-align: center;
     margin-bottom: 2rem;
     color: #4a91a0;
@@ -193,22 +194,10 @@
     transition: all 0.3s ease;
     position: relative;     
   }
-
-  .overflow-dots::after {
-    content: '.......';                /* Add dots at the end */
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: white;             /* Background to match the container for better appearance */
-  }
   
   .expanded {
     max-height: none;              
     -webkit-line-clamp: unset;        
-  }
-
-  .expanded::after {
-    content: '';                   /* Remove dots when expanded */
   }
 
   .apply-button {
@@ -231,16 +220,16 @@
 /* testimonial starts */
 
 .testimonials-section {
-    background-color: #f4f6f9; 
+    background-color: #f8f9fa; 
     padding: 60px 20px; 
     text-align: center; 
   }
   
   .testimonials-title {
-    font-size: 2.5rem; 
-    color: #3498db; 
-    margin-bottom: 40px;
-    font-weight: bold; 
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #4a91a0;
   }
   
   .testimonials-container {

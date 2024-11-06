@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import '../HomePage.css';
 
 const images = [
-    '/assets/marine-banner.jpg',
-    '/assets/marine.jpg',
-    '/assets/marine2.jpg'
+    '/assets/marine (1).jpg',
+    '/assets/marine (3).jpg',
+    '/assets/marine (2).jpg'
 ];
 
 const quotes = [

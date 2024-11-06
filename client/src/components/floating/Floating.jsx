@@ -1,7 +1,5 @@
 
 // FloatingButton.js
-
-import React from "react";
 import { Fab } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -14,7 +12,7 @@ const FloatingButton = () => {
     >
       {/* WhatsApp icon */}
       <a
-        href="https://api.whatsapp.com/send?phone=9361805480
+        href="https://api.whatsapp.com/send?phone=7010534355
         "
         target="_blank"
         rel="noopener noreferrer"
@@ -33,7 +31,7 @@ const FloatingButton = () => {
       </a>
 
       {/* Phone icon */}
-      <a href="tel:+91 93618 05480">
+      <a href="tel:+91 70105 34355">
         <Fab
           color="primary"
           size="medium"

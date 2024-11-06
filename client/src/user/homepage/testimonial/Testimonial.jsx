@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar } from '@mui/material'; // Import Avatar component from MUI
 import '../HomePage.css'
-import image from '../../../../public/assets/manikandan.jpg'
+import image from '../../../../public/assets/sigamani.png'
 
 const testimonials = [
   {
@@ -14,7 +14,7 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <section id="testimonials" className="testimonials-section">
-      <h2 className="testimonials-title">What Our Clients Say</h2>
+      <h2 className="testimonials-title">Administrator</h2>
       <div className="testimonials-container">
         {testimonials.map((testimonial, index) => (
           <div key={index} className="testimonial-card">

@@ -33,7 +33,7 @@ const Navbar = () => {
           <ul className="navbar-menu">
             <li><Link to="/" className="link">Home</Link></li>
             <li><Link to="/service" className="link">Service</Link></li>
-            <li><Link to="/About" className="link">About</Link></li>
+            <li><Link to="/gallery" className="link">Gallery</Link></li>
             <li><Link to="/contact" className="link">Contact</Link></li>
           </ul>
         </div>
@@ -45,9 +45,9 @@ const Navbar = () => {
 
       <div className={showNav ? 'nav-menu show-nav' : 'nav-menu'}>
         <Link to="/" className="nav-link" onClick={closeNav}>Home</Link>
-        <Link to="/about" className="nav-link" onClick={closeNav}>About</Link>
-        <Link to="/contact" className="nav-link" onClick={closeNav}>Service</Link>
-        <Link to="/" className="nav-link" onClick={closeNav}>Contact</Link>
+        <Link to="/service" className="nav-link" onClick={closeNav}>Service</Link>
+        <Link to="/galley" className="nav-link" onClick={closeNav}>Gallery</Link>
+        <Link to="/contact" className="nav-link" onClick={closeNav}>Contact</Link>
       </div>
     </nav>
   );

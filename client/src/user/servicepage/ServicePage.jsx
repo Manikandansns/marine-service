@@ -43,46 +43,26 @@ const ServicePage = () => {
       ) : (
         services.map((service) => (
           <div key={service._id} className="servicepage-container">
-          <div className='servicepage-main-container'>
-            <h2>{service.title}</h2>
-            <p>{service.description}</p>
-            <div className="servicepage-main-container-cardimage">
-            {service.image && (
-              <img
-                className="service-image"
-                src={`http://localhost:5000${service.image}`}
-                alt={service.title}
-              />
-            )}
-            </div>
-            </div>
-
-            <div className='servicepage-sub-container'>
-            <h3 className="sub-services-heading">Sub-Services</h3>
-            {service.subServices.length === 0 ? (
-              <p>No sub-services available</p>
-            ) : (
-              <ul className="sub-service-list">
-                {service.subServices.map((subService) => (
-                  <li key={subService._id} className="sub-service-item">
-                    
-                    <div className="servicepage-sub-container-cardimage">
-                    {subService.image && (
-                      <img
-                        className="sub-service-image"
-                        src={`http://localhost:5000${subService.image}`}
-                        alt={subService.name}
-                      />
-                    )}
-                    </div>
-                    <div className="servicepage-sub-container-cardcontainer">
-                    <h4>{subService.name}</h4>
-                    <p>{subService.description}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div className="servicepage-main-container">
+              <h2>{service.title}</h2>
+              {Array.isArray(service.points) ? (
+                <ul className="service-points-list">
+                  {service.points.map((point, index) => (
+                    <li key={index}>{point}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>{service.points}</p>
+              )}
+              <div className="servicepage-main-container-cardimage">
+                {service.image && (
+                  <img
+                    className="service-image"
+                    src={`http://localhost:5000/${service.image}`}
+                    alt={service.title}
+                  />
+                )}
+              </div>
             </div>
           </div>
         ))
