@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ServicePage.css';
+import CustomSeparator from '../../components/breadcrumb/BreadCrumb';
+import ServiceBanner from './servicebanner/ServiceBanner';
 
 const ServicePage = () => {
   // State to store services data
@@ -37,23 +39,15 @@ const ServicePage = () => {
   // Render services and sub-services
   return (
     <div className="servicepage-wrapper">
-      <h1>Services</h1>
+    <ServiceBanner/>
       {services.length === 0 ? (
         <p>No services available</p>
       ) : (
         services.map((service) => (
           <div key={service._id} className="servicepage-container">
-            <div className="servicepage-main-container">
-              <h2>{service.title}</h2>
-              {Array.isArray(service.points) ? (
-                <ul className="service-points-list">
-                  {service.points.map((point, index) => (
-                    <li key={index}>{point}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p>{service.points}</p>
-              )}
+            <div className="servicepage-main-container-wrapper">
+              
+              <div className="servicepage-main-container">
               <div className="servicepage-main-container-cardimage">
                 {service.image && (
                   <img
@@ -62,6 +56,21 @@ const ServicePage = () => {
                     alt={service.title}
                   />
                 )}
+              </div>
+              <div className="servicepage-main-container-points">
+              <h2 className='servicepage-heading'>{service.title}</h2>  
+              <div className="servicepage-points-wrapper">
+              {Array.isArray(service.points) ? (
+                <ul className="servicepage-points-list">
+                  {service.points.map((point, index) => (
+                    <li  className="servicepage-list" key={index}>{point}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>{service.points}</p>
+              )}
+              </div>
+              </div>
               </div>
             </div>
           </div>

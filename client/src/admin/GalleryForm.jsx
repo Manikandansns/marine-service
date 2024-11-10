@@ -5,7 +5,6 @@ import '../App.css'
 
 const GalleryForm = () => {
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [existingImage, setExistingImage] = useState(''); // For displaying existing image if needed
   const { galleryId } = useParams();
@@ -23,7 +22,6 @@ const GalleryForm = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setTitle(res.data.title);
-      setDescription(res.data.description);
       setExistingImage(res.data.image || '');
       console.log(res.data.image);
     } catch (error) {
@@ -39,7 +37,6 @@ const GalleryForm = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('title', title);
-    formData.append('description', description);
     if (image) {
       formData.append('image', image);
     }
@@ -71,16 +68,6 @@ const GalleryForm = () => {
           placeholder="Gallery Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
-
-      <div className="form-section">
-        <label>Description:</label>
-        <textarea
-          placeholder="Gallery Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
           required
         />
       </div>

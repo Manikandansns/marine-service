@@ -18,7 +18,7 @@ const FAQsPage = () => {
   };
 
   return (
-    <div className="mx-4 mt-12 font-sans text-lg leading-relaxed md:mx-8 ">
+    <div className="mx-4 font-sans text-lg leading-relaxed md:mx-8 ">
       <div className="fixed z-50 bottom-4 right-6">
         <button className="focus:outline-none " onClick={toggleFAQsVisibility}>
           <img

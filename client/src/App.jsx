@@ -1,23 +1,39 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import AdminLogin from './admin/AdminLogin';
 import AdminDashboard from './admin/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import ServiceForm from './admin/ServiceForm';
 import GalleryForm from './admin/GalleryForm';
-// import SubServiceForm from './admin/SubServiceForm';
 import HomePage from './user/homepage/HomePage';
 import ServicePage from './user/servicepage/ServicePage';
 import ContactPage from './user/contactmain/ContactMain';
-import GalleryList from './admin/GalleryList';
-// import SubServicePage from './user/subservicepage/SubServicePage';
+
 import FloatingButton from './components/floating/Floating';
 import FAQsPage from './components/FAQs/FAQsPage';
+import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
+import GalleryPage from './user/gallerypage/GalleryPage';
 
 function App() {
   return (
     <BrowserRouter>
-    <FAQsPage/>
-    <FloatingButton/>
+      <ContentWithConditionalNavbar />
+    </BrowserRouter>
+  );
+}
+
+function ContentWithConditionalNavbar() {
+  const location = useLocation();
+  
+  // Show Navbar only if the current route does not include "/admin"
+  const showNavbar = !location.pathname.startsWith('/admin');
+
+  return (
+    <>
+      {showNavbar && <Navbar />}
+      {showNavbar && <FAQsPage />}
+      {showNavbar && <FloatingButton />}
+
       <Routes>
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
@@ -44,15 +60,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-         {/* <Route path="/admin/add-subservice" element={<SubServiceForm />} /> */}
-        {/* <Route
-          path="/admin/services/:serviceId/subservice/edit/:subServiceId"
-          element={
-            <ProtectedRoute>
-              <SubServiceForm />
-            </ProtectedRoute>
-          }
-        /> */}
         <Route
           path="/admin/gallery/add"
           element={
@@ -72,16 +79,12 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/gallery" element={<GalleryList/>}/>
+        <Route path="/gallery" element={<GalleryPage/>} />
         <Route path="/services/:serviceId" element={<ServicePage />} />
         <Route path="/admin" element={<AdminDashboard />} />
-
-        {/* <Route path="/admin/:serviceId/add-subservice" element={<SubServiceForm />} /> */}
-        {/* <Route path="/admin/:serviceId/subservice/:subServiceId" element={<SubServiceForm />} /> */}
-
-        {/* <Route path="/subservices/:serviceId" element={<SubServicePage/> } /> */}
       </Routes>
-    </BrowserRouter>
+      {showNavbar && <Footer/>}
+    </>
   );
 }
 

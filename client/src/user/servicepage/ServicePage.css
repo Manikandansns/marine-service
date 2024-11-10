@@ -1,149 +1,67 @@
-/* General styles for the service page */
-.servicepage {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f9;
-    color: #333;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Heading styles */
-  .servicepage h1 {
-    text-align: center;
-    color: #007bff; /* Primary color for heading */
-    margin-bottom: 40px;
-  }
-  
-  /* Service card container */
-  .servicepage-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .servicepage-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Service title */
-  .servicepage-container h2 {
-    font-size: 24px;
-    color: #007bff;
-    margin-bottom: 15px;
-  }
+.servicepage-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 
-  .servicepage-main-container-cardimage{
-  }
+/* .servicepage-container{
+  height: 500px;
+} */
 
-  .servicepage-sub-container-cardimage{
-    width: 300px;
-    height: 300px;
-  }
+.servicepage-main-container-wrapper{
+  background-color: white;
+  width: 100%;
+}
+
+.servicepage-main-container{
+  display: flex;
+
+}
+
+.servicepage-main-container-cardimage{
+  width: 30%;
+  height: 500px;
+}
+
+.servicepage-main-container-points{
+  width: 70%;
+  margin: 3rem;
+}
+
+.service-image{
+  width: 100%;
+  height: 100%;
+}
+.servicepage-heading{
+  font-size: 2.5rem;
+  /* text-align: center; */
+  margin-bottom: 2rem;
+  color: #4a91a0;
+}
+.servicepage-points-wrapper{
+  display: flex;
+}
+
+.servicepage-points-list{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.servicepage-list{
+  list-style: none;
+  border: 2px solid #4a91a0;
+  padding: 0.5rem;
+}
+
+@media (max-width: 1200px) {
   
-  /* Service description */
-  .servicepage-container p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  /* Service image */
-  .servicepage-container img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 20px;
-  }
-  
-  /* Sub-services section */
-  .sub-services-heading {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .sub-service-list {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  }
-  
-  .servicepage-sub-container-cardcontainer{
-    margin: 1.2rem;
-  }
-  .sub-service-item {
-    background-color: #F4F5F7;
-    border-radius: 5px;
-  }
-  
-  .sub-service-item h4 {
-    font-size: 18px;
-    color: #007bff;
-    margin-bottom: 8px;
-  }
-  
-  .sub-service-item p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  /* Sub-service image */
-  .sub-service-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .servicepage-container {
-      padding: 15px;
-    }
-  
-    .servicepage-container h2 {
-      font-size: 22px;
-    }
-  
-    .servicepage-container img {
-      max-width: 250px;
-    }
-  
-    .sub-service-item h4 {
-      font-size: 16px;
-    }
-  
-    .sub-service-item img {
-      max-width: 120px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .servicepage-container {
-      padding: 10px;
-    }
-  
-    .servicepage-container h2 {
-      font-size: 20px;
-    }
-  
-    .servicepage-container img {
-      max-width: 200px;
-    }
-  
-    .sub-service-item h4 {
-      font-size: 14px;
-    }
-  
-    .sub-service-item img {
-      max-width: 100px;
-    }
-  }
-  
+.servicepage-main-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.servicepage-main-container-cardimage{
+  width: -webkit-fill-available;
+  height: 500px;
+}
+}

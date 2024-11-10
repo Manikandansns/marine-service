@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../HomePage.css'; 
-
+import '../HomePage.css';
+import SkeletonCard from '../../../components/skeletoncard/SkeletonCard'; 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 AOS.init();
 
 const ServiceSection = () => {
-  const [services, setServices] = useState([]); 
+  const [services, setServices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // New state for loading
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
 
-  // Fetch services from the backend API when the component mounts
   useEffect(() => {
     const fetchServices = async () => {
       try {
@@ -20,26 +20,30 @@ const ServiceSection = () => {
         setServices(response.data);
       } catch (error) {
         console.error('Error fetching services:', error);
+      } finally {
+        setIsLoading(false); // Set loading to false after fetch
       }
     };
 
     fetchServices();
   }, []);
 
-  // Function to navigate to the sub-services page
   const handleApplyNow = () => {
     navigate('/service');
   };
 
   return (
-    <div className="service-section" 
+    <div className="service-section"
       data-aos="zoom-in"
       data-aos-duration="1000"
       data-aos-easing="ease-in-out"
     >
       <h2>Our Services</h2>
       <div className="service-cards">
-        {services.length > 0 ? (
+        {isLoading ? (
+          // Render skeleton cards while loading
+          Array(5).fill().map((_, index) => <SkeletonCard key={index} />)
+        ) : (
           services.map((service) => (
             <div key={service._id} className="service-card">
               <div className="service-img-card">
@@ -65,8 +69,6 @@ const ServiceSection = () => {
               </div>
             </div>
           ))
-        ) : (
-          <p>Loading services...</p>
         )}
       </div>
     </div>

@@ -17,7 +17,7 @@
       }
 
       .cls-2 {
-        fill: #231f20;
+        fill: #ffff;
         font-family: Calibri-Bold, Calibri;
         font-size: 33px;
         font-weight: 700;

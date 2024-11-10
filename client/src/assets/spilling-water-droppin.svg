@@ -1,0 +1,57 @@
+<svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main Droplet -->
+  <path id="mainDroplet" d="M100,30 C130,30 135,120 100,190 C65,120 70,30 100,30 Z" fill="deepskyblue">
+    <animate 
+      attributeName="d" 
+      values="
+        M100,30 C130,30 135,120 100,190 C65,120 70,30 100,30 Z;
+        M100,35 C132,35 137,125 100,195 C63,125 68,35 100,35 Z;
+        M100,30 C130,30 135,120 100,190 C65,120 70,30 100,30 Z"
+      dur="2s"
+      repeatCount="indefinite" />
+  </path>
+
+  <!-- Falling Droplet -->
+  <circle cx="100" cy="60" r="8" fill="deepskyblue" opacity="0.8">
+    <animate 
+      attributeName="cy" 
+      values="60; 260" 
+      dur="1.3s" 
+      begin="0.5s"
+      repeatCount="indefinite" />
+    <animate 
+      attributeName="opacity" 
+      values="1; 0" 
+      dur="0.1s" 
+      begin="1.2s"
+      fill="freeze" />
+  </circle>
+
+  <!-- Splash Effect - Left Droplet -->
+  <circle cx="90" cy="270" r="3" fill="deepskyblue" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="0.6s" begin="1.3s" />
+    <animate attributeName="cx" values="100; 90" dur="0.6s" begin="1.3s" />
+    <animate attributeName="cy" values="260; 270" dur="0.6s" begin="1.3s" />
+  </circle>
+
+  <!-- Splash Effect - Right Droplet -->
+  <circle cx="110" cy="270" r="3" fill="deepskyblue" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="0.6s" begin="1.3s" />
+    <animate attributeName="cx" values="100; 110" dur="0.6s" begin="1.3s" />
+    <animate attributeName="cy" values="260; 270" dur="0.6s" begin="1.3s" />
+  </circle>
+
+  <!-- Splash Effect - Smaller Left Droplet -->
+  <circle cx="95" cy="280" r="2" fill="deepskyblue" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="0.5s" begin="1.4s" />
+    <animate attributeName="cx" values="100; 95" dur="0.5s" begin="1.4s" />
+    <animate attributeName="cy" values="260; 280" dur="0.5s" begin="1.4s" />
+  </circle>
+
+  <!-- Splash Effect - Smaller Right Droplet -->
+  <circle cx="105" cy="280" r="2" fill="deepskyblue" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="0.5s" begin="1.4s" />
+    <animate attributeName="cx" values="100; 105" dur="0.5s" begin="1.4s" />
+    <animate attributeName="cy" values="260; 280" dur="0.5s" begin="1.4s" />
+  </circle>
+</svg>
