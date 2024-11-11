@@ -2,11 +2,21 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  background-color: #494b4c6e;
 }
 
 /* .servicepage-container{
   height: 500px;
 } */
+
+.servicepage-heading-wrapper{
+  padding-top: 2rem;
+  color: #70e4f0;
+}
+.servicepage-para{
+  text-align: center;
+  /* margin-bottom: 2rem; */
+}
 
 .servicepage-main-container-wrapper{
   background-color: white;
@@ -34,10 +44,15 @@
 }
 .servicepage-heading{
   font-size: 2.5rem;
-  /* text-align: center; */
-  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.servicepage-card-heading{
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
   color: #4a91a0;
 }
+
 .servicepage-points-wrapper{
   display: flex;
 }

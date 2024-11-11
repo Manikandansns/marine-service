@@ -7,7 +7,7 @@ import team from '../../../assets/team.webp';
 const FeatureSection = () => {
   return (
     <div className="experience-wrapper">
-      <div className="container">
+      <div className="">
         <div className="s-title-group">
           <div className="s-title">
             <h2>Features</h2>
@@ -17,7 +17,7 @@ const FeatureSection = () => {
         <div className="s-feature-list">
           {/* Feature 1 */}
           <div className="s-feature-item">
-            <div className="s-img-wrapper">
+            <div className="blob-wrapper">
               <img src={experience} alt="International Experience" />
             </div>
             <div className="s-item-content">
@@ -28,7 +28,7 @@ const FeatureSection = () => {
 
           {/* Feature 2 */}
           <div className="s-feature-item">
-            <div className="s-img-wrapper">
+            <div className="blob-wrapper">
               <img src={servicing} alt="Tailored Solutions" />
             </div>
             <div className="s-item-content">
@@ -39,7 +39,7 @@ const FeatureSection = () => {
 
           {/* Feature 3 */}
           <div className="s-feature-item">
-            <div className="s-img-wrapper">
+            <div className="blob-wrapper">
               <img src={team} alt="Expert Team" />
             </div>
             <div className="s-item-content">

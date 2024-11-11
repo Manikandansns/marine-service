@@ -1,8 +1,17 @@
+.gallery-wrapper{
+  background-color: #494b4c6e;
+  padding-top: 5rem;
+  color: #70e4f0;
+}
 .gallery-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
   gap: 20px;
   padding: 20px;
-  margin-top: 5.5rem;
+}
+.gallerypage-para{
+  padding-bottom: 2rem;
 }
 
 .gallery-card {

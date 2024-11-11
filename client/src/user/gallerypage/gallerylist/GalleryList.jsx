@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../GalleryPage.css'; // Assuming you have a separate CSS file for gallery page styling
+import { Divider } from '@mui/material';
 
 const GalleryList = () => {
   const [galleryItems, setGalleryItems] = useState([]);
@@ -21,6 +22,11 @@ const GalleryList = () => {
   }, []);
 
   return (
+    <div className='gallery-wrapper'>
+       <div className="heading-wrapper">
+    <h1 className='servicepage-heading'>Gallery</h1>
+    <p className='servicepage-para gallerypage-para'>Explore Our Collections</p>
+    </div>
     <div className="gallery-container">
       {galleryItems.map((item) => (
         <div className="gallery-item" key={item._id}>
@@ -38,6 +44,7 @@ const GalleryList = () => {
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 };

@@ -40,11 +40,17 @@ const ServicePage = () => {
   return (
     <div className="servicepage-wrapper">
     <ServiceBanner/>
+    <div className="servicepage-heading-wrapper">
+    <h1 className='servicepage-heading'>Services</h1>
+    <p className='servicepage-para'>Explore Our Professional Services</p>
+    </div>
       {services.length === 0 ? (
         <p>No services available</p>
       ) : (
         services.map((service) => (
+          
           <div key={service._id} className="servicepage-container">
+
             <div className="servicepage-main-container-wrapper">
               
               <div className="servicepage-main-container">
@@ -58,7 +64,7 @@ const ServicePage = () => {
                 )}
               </div>
               <div className="servicepage-main-container-points">
-              <h2 className='servicepage-heading'>{service.title}</h2>  
+              <h2 className='servicepage-card-heading'>{service.title}</h2>  
               <div className="servicepage-points-wrapper">
               {Array.isArray(service.points) ? (
                 <ul className="servicepage-points-list">
