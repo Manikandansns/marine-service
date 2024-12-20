@@ -8,7 +8,7 @@ const images = [
 ];
 
 const quotes = [
-  "Reliable marine services you can count on.",
+  "Reliable marine services you can count on!",
   "Navigating your fleet to safety and success.",
   "Excellence in every ship we service."
 ];
